@@ -49,14 +49,21 @@ const fetchIngredient = (meal)=>{
 };
 const openRecipePopup = (meal) =>{
   recipeDetailsContent.innerHTML = `
-  <h2>${meal.strMeal}</h2>
+  <h2 class="recipeName">${meal.strMeal}</h2>
   <h3>Ingredients: </h3> 
-  <ul> ${fetchIngredient(meal)}</ul>
+  <ul class= "ingredientList"> ${fetchIngredient(meal)}</ul>
+  <div>
+  <h3>Instructions:</h3>
+  <p class="recipeInstructions">${meal.strInstructions}</p>
+</div>
   `
+  
   recipeDetailsContent.parentElement.style.display = "block"
 
 }
-
+recipeCloseBtn.addEventListener('click',(e)=>{
+  recipeDetailsContent.parentElement.style.display = "none";
+})
 SearchBtn.addEventListener('click',(e)=>{
   e.preventDefault();
   const SearchInput = SearchBox.value.trim();
